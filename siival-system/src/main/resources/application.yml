@@ -1,0 +1,187 @@
+server:
+  port: 8000
+
+spring:
+  freemarker:
+    check-template-location: false
+  profiles:
+    active: dev
+  jackson:
+    time-zone: GMT+8
+  data:
+    redis:
+      repositories:
+        enabled: false
+
+  #配置 Jpa
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  datasource:
+    druid:
+      db-type: com.alibaba.druid.pool.DruidDataSource
+      driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+      url: jdbc:log4jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
+      username: root
+      password: 123456
+      # 初始连接数
+      initial-size: 5
+      # 最小连接数
+      min-idle: 15
+      # 最大连接数
+      max-active: 30
+      # 超时时间(以秒数为单位)
+      remove-abandoned-timeout: 180
+      # 获取连接超时时间
+      max-wait: 3000
+      # 连接有效性检测时间
+      time-between-eviction-runs-millis: 60000
+      # 连接在池中最小生存的时间
+      min-evictable-idle-time-millis: 300000
+      # 连接在池中最大生存的时间
+      max-evictable-idle-time-millis: 900000
+      # 指明连接是否被空闲连接回收器(如果有)进行检验.如果检测失败,则连接将被从池中去除
+      test-while-idle: true
+      # 指明是否在从池中取出连接前进行检验,如果检验失败, 则从池中去除连接并尝试取出另一个
+      test-on-borrow: true
+      # 是否在归还到池中前进行检验
+      test-on-return: false
+      # 检测连接是否有效
+      validation-query: select 1
+      # 配置监控统计
+      webStatFilter:
+        enabled: true
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        reset-enable: false
+      filter:
+        stat:
+          enabled: true
+          # 记录慢SQL
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: true
+        wall:
+          config:
+            multi-statement-allow: true
+  redis:
+    #数据库索引
+    database:  15
+    host:  127.0.0.1
+    port:  6379
+    password:
+    #连接超时时间
+    timeout: 5000
+
+task:
+  pool:
+    # 核心线程池大小
+    core-pool-size: 10
+    # 最大线程数
+    max-pool-size: 30
+    # 活跃时间
+    keep-alive-seconds: 60
+    # 队列容量
+    queue-capacity: 50
+
+#七牛云
+qiniu:
+  # 文件大小 /M
+  max-size: 15
+
+# 登录相关配置
+login:
+  # 登录缓存
+  cache-enable: true
+  #  是否限制单用户登录
+  single-login: false
+  #  验证码
+  login-code:
+    #  验证码类型配置 查看 LoginProperties 类
+    code-type: arithmetic
+    #  登录图形验证码有效时间/分钟
+    expiration: 2
+    #  验证码高度
+    width: 111
+    #  验证码宽度
+    height: 36
+    # 内容长度
+    length: 2
+    # 字体名称，为空则使用默认字体
+    font-name:
+    # 字体大小
+    font-size: 25
+
+jwt:
+  header: Authorization
+  # 令牌前缀
+  token-start-with: Bearer
+  # 必须使用最少88位的Base64对该令牌进行编码
+  base64-secret: ZmQ0ZGIjVkZDU5Y2Y0NTBjMGM4NDN2EWRm03OGYwZWA5Q2MjYjiOTg1ZlIZEMMDQwY2I1Ng4Y2UNzDc0NGMxZWU2MzUzNW3YThODVwGE3Zjl5djOWMFjZY3Zm4MhNGY3ZTNjZmMjNMxY2Yx1ODTBQjdhYmQ3MjY1NzJmNTE0MzI=
+  # 令牌过期时间 此处单位/毫秒 ，默认4小时，可在此网站生成 https://www.convertworld.com/zh-hans/time/milliseconds.html
+  token-validity-in-seconds: 14400000
+  # 在线用户key
+  online-key: online-token-
+  # 验证码
+  code-key: code-key-
+  # token 续期检查时间范围（默认30分钟，单位毫秒），在token即将过期的一段时间内用户操作了，则给用户的token续期
+  detect: 1800000
+  # 续期时间范围，默认1小时，单位毫秒
+  renew: 3600000
+
+#是否允许生成代码，生产环境设置为false
+generator:
+  enabled: true
+
+
+#是否开启 swagger-ui
+swagger:
+  enabled: true
+
+#邮箱验证码有效时间/秒
+code:
+  expiration: 300
+
+#密码加密传输，前端公钥加密，后端私钥解密
+rsa:
+  private_key: MIIBUwIBADANBgkqhkiG9w0BAQEFAASCAT0wggE5AgEAAkEA0vfvyTdGJkdbHkB8mp0f3FE0GYP3AYPaJF7jUd1M0XxFSE2ceK3k2kw20YvQ09NJKk+OMjWQl9WitG9pB6tSCQIDAQABAkA2SimBrWC2/wvauBuYqjCFwLvYiRYqZKThUS3MZlebXJiLB+Ue/gUifAAKIg1avttUZsHBHrop4qfJCwAI0+YRAiEA+W3NK/RaXtnRqmoUUkb59zsZUBLpvZgQPfj1MhyHDz0CIQDYhsAhPJ3mgS64NbUZmGWuuNKp5coY2GIj/zYDMJp6vQIgUueLFXv/eZ1ekgz2Oi67MNCk5jeTF2BurZqNLR3MSmUCIFT3Q6uHMtsB9Eha4u7hS31tj1UWE+D+ADzp59MGnoftAiBeHT7gDMuqeJHPL4b+kC+gzV4FGTfhR9q3tTbklZkD2A==
+
+
+# IP 本地解析
+ip:
+  local-parsing: true
+
+
+# 文件存储路径
+file:
+  mac:
+    path: ~/file/
+    avatar: ~/avatar/
+  linux:
+    path: /home/file/
+    avatar: /home/avatar/
+  windows:
+    path: C:\file\
+    avatar: C:\avatar\
+  # 文件大小 /M
+  maxSize: 100
+  avatarMaxSize: 5
+  fileDomain: http://127.0.0.1:8000/file/
+  imageDomain: http://127.0.0.1:8000/avatar/
+
+
+pdf:
+  export:
+    author: Mark
+    subject: 早晚答题
+    keyword: 小程序早晚答
+    creator: mark
+    slogan:  美好生活，你我一起
+    water-mark: 早晚答
+    password:
+    barcode: http://image.siival.com/zaowandabarcode.jpg
