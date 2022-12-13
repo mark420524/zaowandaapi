@@ -1219,6 +1219,7 @@ CREATE TABLE `wx_user`  (
   `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '1-启用,0-禁用',
   `create_time` datetime NOT NULL COMMENT '创建时间',
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
+  `app_id` varchar(128) DEFAULT NULL COMMENT '小程序appid',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = 'wx user info' ROW_FORMAT = DYNAMIC;
 
