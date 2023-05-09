@@ -100,6 +100,7 @@ public class ExamInfoServiceImpl implements ExamInfoService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public ExamInfoDto create(ExamInfo resources) {
+        resources.setCreateTime(TimeUtils.getCurrentTimestamp());
         return examInfoMapper.toDto(examInfoRepository.save(resources));
     }
 

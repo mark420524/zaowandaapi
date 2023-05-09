@@ -88,6 +88,7 @@ public class ExamMenuServiceImpl implements ExamMenuService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public ExamMenuDto create(ExamMenu resources) {
+        resources.setCreateTime(TimeUtils.getCurrentTimestamp());
         return examMenuMapper.toDto(examMenuRepository.save(resources));
     }
 

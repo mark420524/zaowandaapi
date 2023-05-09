@@ -90,6 +90,7 @@ public class UserWheelLogServiceImpl implements UserWheelLogService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public UserWheelLogDto create(UserWheelLog resources) {
+        resources.setCreateTime(TimeUtils.getCurrentTimestamp());
         return userWheelLogMapper.toDto(userWheelLogRepository.save(resources));
     }
 

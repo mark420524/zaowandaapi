@@ -19,10 +19,7 @@ import com.siival.bot.modules.api.req.ExamScoreReq;
 import com.siival.bot.modules.api.req.ExamSubmitReq;
 import com.siival.bot.modules.api.resp.ExamScoreRankVo;
 import com.siival.bot.modules.bsc.domain.UserExamScore;
-import com.siival.bot.utils.FileUtil;
-import com.siival.bot.utils.PageUtil;
-import com.siival.bot.utils.QueryHelp;
-import com.siival.bot.utils.ValidationUtil;
+import com.siival.bot.utils.*;
 import lombok.RequiredArgsConstructor;
 import com.siival.bot.modules.bsc.repository.UserExamScoreRepository;
 import com.siival.bot.modules.bsc.service.UserExamScoreService;
@@ -80,6 +77,7 @@ public class UserExamScoreServiceImpl implements UserExamScoreService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public UserExamScoreDto create(UserExamScore resources) {
+        resources.setCreateTime(TimeUtils.getCurrentTimestamp());
         return userExamScoreMapper.toDto(userExamScoreRepository.save(resources));
     }
 

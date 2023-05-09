@@ -16,10 +16,7 @@
 package com.siival.bot.modules.bsc.service.impl;
 
 import com.siival.bot.modules.bsc.domain.UserWrongQuestion;
-import com.siival.bot.utils.FileUtil;
-import com.siival.bot.utils.PageUtil;
-import com.siival.bot.utils.QueryHelp;
-import com.siival.bot.utils.ValidationUtil;
+import com.siival.bot.utils.*;
 import lombok.RequiredArgsConstructor;
 import com.siival.bot.modules.bsc.repository.UserWrongQuestionRepository;
 import com.siival.bot.modules.bsc.service.UserWrongQuestionService;
@@ -72,6 +69,7 @@ public class UserWrongQuestionServiceImpl implements UserWrongQuestionService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public UserWrongQuestionDto create(UserWrongQuestion resources) {
+        resources.setCreateTime(TimeUtils.getCurrentTimestamp());
         return userWrongQuestionMapper.toDto(userWrongQuestionRepository.save(resources));
     }
 

@@ -16,10 +16,7 @@
 package com.siival.bot.modules.bsc.service.impl;
 
 import com.siival.bot.modules.bsc.domain.UserFavoriteQuestion;
-import com.siival.bot.utils.FileUtil;
-import com.siival.bot.utils.PageUtil;
-import com.siival.bot.utils.QueryHelp;
-import com.siival.bot.utils.ValidationUtil;
+import com.siival.bot.utils.*;
 import lombok.RequiredArgsConstructor;
 import com.siival.bot.modules.bsc.repository.UserFavoriteQuestionRepository;
 import com.siival.bot.modules.bsc.service.UserFavoriteQuestionService;
@@ -72,6 +69,7 @@ public class UserFavoriteQuestionServiceImpl implements UserFavoriteQuestionServ
     @Override
     @Transactional(rollbackFor = Exception.class)
     public UserFavoriteQuestionDto create(UserFavoriteQuestion resources) {
+        resources.setCreateTime(TimeUtils.getCurrentTimestamp());
         return userFavoriteQuestionMapper.toDto(userFavoriteQuestionRepository.save(resources));
     }
 

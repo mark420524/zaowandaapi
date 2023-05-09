@@ -74,6 +74,7 @@ public class UserInviteLogServiceImpl implements UserInviteLogService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public UserInviteLogDto create(UserInviteLog resources) {
+        resources.setCreateTime(TimeUtils.getCurrentTimestamp());
         return userInviteLogMapper.toDto(userInviteLogRepository.save(resources));
     }
 

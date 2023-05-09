@@ -21,10 +21,7 @@ import cn.binarywang.wx.miniapp.config.impl.WxMaDefaultConfigImpl;
 import com.siival.bot.enums.CommonStatusEnum;
 import com.siival.bot.modules.bsc.domain.WxApp;
 import com.siival.bot.modules.bsc.res.AppNameVo;
-import com.siival.bot.utils.FileUtil;
-import com.siival.bot.utils.PageUtil;
-import com.siival.bot.utils.QueryHelp;
-import com.siival.bot.utils.ValidationUtil;
+import com.siival.bot.utils.*;
 import lombok.RequiredArgsConstructor;
 import com.siival.bot.modules.bsc.repository.WxAppRepository;
 import com.siival.bot.modules.bsc.service.WxAppService;
@@ -83,6 +80,7 @@ public class WxAppServiceImpl implements WxAppService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public WxAppDto create(WxApp resources) {
+        resources.setCreateTime(TimeUtils.getCurrentTimestamp());
         putWxAppService(resources.getAppId(), resources);
         return wxAppMapper.toDto(wxAppRepository.save(resources));
     }

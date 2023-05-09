@@ -16,10 +16,7 @@
 package com.siival.bot.modules.bsc.service.impl;
 
 import com.siival.bot.modules.bsc.domain.UserSignLog;
-import com.siival.bot.utils.FileUtil;
-import com.siival.bot.utils.PageUtil;
-import com.siival.bot.utils.QueryHelp;
-import com.siival.bot.utils.ValidationUtil;
+import com.siival.bot.utils.*;
 import lombok.RequiredArgsConstructor;
 import com.siival.bot.modules.bsc.repository.UserSignLogRepository;
 import com.siival.bot.modules.bsc.service.UserSignLogService;
@@ -72,6 +69,7 @@ public class UserSignLogServiceImpl implements UserSignLogService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public UserSignLogDto create(UserSignLog resources) {
+        resources.setCreateTime(TimeUtils.getCurrentTimestamp());
         return userSignLogMapper.toDto(userSignLogRepository.save(resources));
     }
 

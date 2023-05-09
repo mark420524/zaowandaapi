@@ -16,10 +16,7 @@
 package com.siival.bot.modules.bsc.service.impl;
 
 import com.siival.bot.modules.bsc.domain.QuestionToday;
-import com.siival.bot.utils.FileUtil;
-import com.siival.bot.utils.PageUtil;
-import com.siival.bot.utils.QueryHelp;
-import com.siival.bot.utils.ValidationUtil;
+import com.siival.bot.utils.*;
 import lombok.RequiredArgsConstructor;
 import com.siival.bot.modules.bsc.repository.QuestionTodayRepository;
 import com.siival.bot.modules.bsc.service.QuestionTodayService;
@@ -72,6 +69,7 @@ public class QuestionTodayServiceImpl implements QuestionTodayService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public QuestionTodayDto create(QuestionToday resources) {
+        resources.setCreateTime(TimeUtils.getCurrentTimestamp());
         return questionTodayMapper.toDto(questionTodayRepository.save(resources));
     }
 

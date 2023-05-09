@@ -102,6 +102,7 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public UserInfoDto create(UserInfo resources) {
+        resources.setCreateTime(TimeUtils.getCurrentTimestamp());
         return userInfoMapper.toDto(userInfoRepository.save(resources));
     }
 

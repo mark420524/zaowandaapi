@@ -18,10 +18,7 @@ package com.siival.bot.modules.bsc.service.impl;
 import com.siival.bot.modules.api.req.BaseReq;
 import com.siival.bot.modules.api.resp.UserIntegralLogVo;
 import com.siival.bot.modules.bsc.domain.UserIntegralLog;
-import com.siival.bot.utils.FileUtil;
-import com.siival.bot.utils.PageUtil;
-import com.siival.bot.utils.QueryHelp;
-import com.siival.bot.utils.ValidationUtil;
+import com.siival.bot.utils.*;
 import lombok.RequiredArgsConstructor;
 import com.siival.bot.modules.bsc.repository.UserIntegralLogRepository;
 import com.siival.bot.modules.bsc.service.UserIntegralLogService;
@@ -77,6 +74,7 @@ public class UserIntegralLogServiceImpl implements UserIntegralLogService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public UserIntegralLogDto create(UserIntegralLog resources) {
+        resources.setCreateTime(TimeUtils.getCurrentTimestamp());
         return userIntegralLogMapper.toDto(userIntegralLogRepository.save(resources));
     }
 

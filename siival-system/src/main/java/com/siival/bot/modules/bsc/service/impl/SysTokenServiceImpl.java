@@ -74,6 +74,7 @@ public class SysTokenServiceImpl implements SysTokenService {
     @Transactional(rollbackFor = Exception.class)
     public SysTokenDto create(SysToken resources) {
         resources.setToken(UUIDUtil.getRandomUUID());
+        resources.setCreateTime(TimeUtils.getCurrentTimestamp());
         sysTokenRepository.save(resources);
         buildTokenCache(resources);
         return sysTokenMapper.toDto(resources);

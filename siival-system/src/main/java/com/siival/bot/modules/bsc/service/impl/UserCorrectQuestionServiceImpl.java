@@ -80,6 +80,7 @@ public class UserCorrectQuestionServiceImpl implements UserCorrectQuestionServic
     @Override
     @Transactional(rollbackFor = Exception.class)
     public UserCorrectQuestionDto create(UserCorrectQuestion resources) {
+        resources.setCreateTime(TimeUtils.getCurrentTimestamp());
         return userCorrectQuestionMapper.toDto(userCorrectQuestionRepository.save(resources));
     }
 

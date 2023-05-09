@@ -74,6 +74,7 @@ public class SysSettingServiceImpl implements SysSettingService {
         if(sysSettingRepository.findFirstByName(resources.getName()) != null){
             throw new EntityExistException(SysSetting.class,"name",resources.getName());
         }
+        resources.setCreateTime(TimeUtils.getCurrentTimestamp());
         setRedisValueCache(resources.getName(), resources.getValue());
         return sysSettingMapper.toDto(sysSettingRepository.save(resources));
     }

@@ -80,6 +80,7 @@ public class UserExportLogServiceImpl implements UserExportLogService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public UserExportLogDto create(UserExportLog resources) {
+        resources.setCreateTime(TimeUtils.getCurrentTimestamp());
         return userExportLogMapper.toDto(userExportLogRepository.save(resources));
     }
 
