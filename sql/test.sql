@@ -1089,6 +1089,9 @@ CREATE TABLE `user_export_log`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `export_type` int NOT NULL DEFAULT 1 COMMENT '1-题库  2-试卷',
   `exam_id` int NULL DEFAULT NULL COMMENT '试卷id',
+  `file_path` varchar(255) DEFAULT NULL COMMENT '发送邮件附件地址pdf用到',
+  `question_type` tinyint DEFAULT '0' COMMENT '0-完整题库 1-模拟考试试卷',
+  `question_number` int DEFAULT NULL COMMENT '模拟考试试卷题目数量',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户导出题库log' ROW_FORMAT = Dynamic;
 
@@ -1262,7 +1265,7 @@ CREATE TABLE `sys_setting`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `name`(`name`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统设置' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统设置' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_setting
@@ -1274,7 +1277,48 @@ INSERT INTO `sys_setting` VALUES (4, 'correct_question_integral', '10', '题目�
 INSERT INTO `sys_setting` VALUES (5, 'handle_pdf_count', '5', '每天免费处理pdf次数', 'admin', 'admin', '2022-05-15 17:35:39', '2022-05-15 17:35:39');
 INSERT INTO `sys_setting` VALUES (6, 'handle_pdf_integral', '100', '处理pdf文件消耗积分', 'admin', 'admin', '2022-05-15 19:18:26', '2022-05-15 19:39:11');
 INSERT INTO `sys_setting` VALUES (7, 'contact_qq_group', '123955944', '关于我们qq群号', 'admin', 'admin', '2022-05-15 19:18:26', '2022-05-15 19:39:11');
+INSERT INTO `sys_setting`  VALUES (8, 'handle_ocr_count', '5', '免费处理ocr次数', 'admin', 'admin', '2022-07-23 11:55:40', '2022-07-23 11:55:40');
+INSERT INTO `sys_setting`  VALUES (9, 'short_url_expire_days', '15', '短链有效期', 'admin', 'admin', '2022-07-23 11:55:40', '2022-07-23 11:55:40');
+INSERT INTO `sys_setting`  VALUES (10, 'short_url_day_count', '5', '短链每天生成免费次数', 'admin', 'admin', '2022-07-23 11:55:40', '2022-07-23 11:55:40');
+INSERT INTO `sys_setting`  VALUES (11, 'guess_idiom_answer_right', '3', '猜成语正确获得', 'admin', 'admin', '2023-03-21 16:44:37', '2023-03-21 16:44:37');
+INSERT INTO `sys_setting`  VALUES (12, 'guess_idiom_answer_tips', '10', '猜成语提示消耗', 'admin', 'admin', '2023-03-21 16:44:58', '2023-03-21 16:44:58');
+INSERT INTO `sys_setting`  VALUES (13, 'guess_idiom_sign_gold', '20', '猜成语签到', 'admin', 'admin', '2023-03-22 21:06:55', '2023-03-22 21:06:58');
 
+
+-- ----------------------------
+-- Table structure for tool_items
+-- ----------------------------
+DROP TABLE IF EXISTS `tool_items`;
+CREATE TABLE `tool_items`  (
+  `id` int NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `text` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '显示文字',
+  `url` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '点击跳转url',
+  `link_type` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '描述',
+  `icon_color` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'icon color',
+  `icon` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'icon',
+  `status` tinyint(1) NULL DEFAULT 1 COMMENT '1-启用，0-禁用',
+  `sort` int NULL DEFAULT 0 COMMENT '排序值',
+  `create_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建者',
+  `update_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '更新者',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建日期',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统工具页面item' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of tool_items
+-- ----------------------------
+INSERT INTO `tool_items` VALUES (1, '汉语字典', '/pages/word/index', 'navigateTo', 'green', 'bulb-o', 1, 1, 'admin', 'admin', '2022-07-29 21:06:52', '2022-07-29 21:06:52');
+INSERT INTO `tool_items` VALUES (2, '成语大全', '/pages/idiom/index', 'navigateTo', 'red', 'smile-o', 1, 2, 'admin', 'admin', '2022-07-29 21:06:52', '2022-07-29 21:06:52');
+INSERT INTO `tool_items` VALUES (3, '题库导出', '/pages/exportq/index', 'navigateTo', '#32bf44;', 'guide-o', 1, 3, 'admin', 'admin', '2022-07-29 21:06:52', '2022-07-29 21:06:52');
+INSERT INTO `tool_items` VALUES (4, '英汉词典', '/pages/translate/index', 'navigateTo', 'blue', 'font-o', 1, 4, 'admin', 'admin', '2022-07-29 21:06:52', '2022-07-29 21:06:52');
+INSERT INTO `tool_items` VALUES (5, '诗词歌赋', '/pages/poetry/index', 'navigateTo', '#229c69', 'flower-o', 1, 5, 'admin', 'admin', '2022-07-29 21:06:52', '2022-07-29 21:06:52');
+INSERT INTO `tool_items` VALUES (6, '试卷搜索', '/pages/search/exam', 'navigateTo', 'red', 'fire-o', 1, 6, 'admin', 'admin', '2022-07-29 21:06:52', '2022-07-29 21:06:52');
+INSERT INTO `tool_items` VALUES (7, '萌宝启蒙', '/pages/children/index', 'navigateTo', '#32bf44;', 'flag-o', 1, 7, 'admin', 'admin', '2022-07-29 21:06:52', '2022-07-29 21:06:52');
+INSERT INTO `tool_items` VALUES (8, '休息一下', '/pages/funny/index', 'navigateTo', 'blue', 'music-o', 1, 8, 'admin', 'admin', '2022-07-29 21:06:52', '2022-07-29 21:06:52');
+INSERT INTO `tool_items` VALUES (9, 'pdf工具', '/pages/pdftools/index', 'navigateTo', 'green', 'bag-o', 1, 9, 'admin', 'admin', '2022-07-29 21:06:52', '2022-07-29 21:06:52');
+INSERT INTO `tool_items` VALUES (10, '文字提取', '/pages/ocr/index', 'navigateTo', 'red', 'aim', 1, 10, 'admin', 'admin', '2022-07-29 21:06:52', '2022-07-29 21:06:52');
+INSERT INTO `tool_items` VALUES (11, '短链生成', '/pages/short/index', 'navigateTo', 'green', 'shrink', 1, 10, 'admin', 'admin', '2022-07-29 21:06:52', '2022-07-29 21:06:52');
 
 
 SET FOREIGN_KEY_CHECKS = 1;
