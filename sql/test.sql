@@ -257,8 +257,56 @@ CREATE TABLE `question_info`  (
   `right_answer` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '答案',
   `question` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '问题',
   `select_list` json NULL COMMENT '选项列表',
+  `qid` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '字符串id，唯一性，防止爆破',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '问题列表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 50 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '问题列表' ROW_FORMAT = DYNAMIC;
+
+INSERT INTO `question_info` VALUES (4, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'B', '[单选]一个人在赤道上称了一次自己的体重,身体条件相同的情况下又到北极去称了一次,那么:', '[{\"title\": \"A赤道重,北极轻　\"}, {\"title\": \"B赤道轻,北极重　\"}, {\"title\": \"C一样重\"}]', 'ak9ccb4y');
+INSERT INTO `question_info` VALUES (5, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'D', '[单选]下面哪位美籍华人着名物理学家未曾获过诺贝尔物理学奖', '[{\"title\": \"A.杨振宁　\"}, {\"title\": \"B.李政道　\"}, {\"title\": \"C.丁肇中　\"}, {\"title\": \"D.吴健雄\"}]', 'vanzgah2');
+INSERT INTO `question_info` VALUES (6, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'A', '[单选]新闻价值构成要素不包括。', '[{\"title\": \"A、真实性\"}, {\"title\": \"B、重要性\"}, {\"title\": \"C、显著性\"}, {\"title\": \"D、趣味性\"}]', '3m7ysmd6');
+INSERT INTO `question_info` VALUES (7, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'C', '[单选]19世纪末20世纪初，主要资本主义国家的新闻事业进入阶段。', '[{\"title\": \"A、集权主义\"}, {\"title\": \"B、自由主义\"}, {\"title\": \"C、集团垄断\"}, {\"title\": \"D、社会主义\"}]', 'mwsfmfzn');
+INSERT INTO `question_info` VALUES (8, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'A', '[单选]“新闻自由”思想的发源地是。', '[{\"title\": \"A、英国\"}, {\"title\": \"B、法国\"}, {\"title\": \"C、美国　\"}, {\"title\": \"D、德国\"}]', 'y2fwjjtz');
+INSERT INTO `question_info` VALUES (9, 1, 1, 3, '2022-02-15 21:56:27', NULL, '', 1, 'A,C', '[多选]有哪些鸟类能模仿人语? ', '[{\"title\": \"A.八哥\"}, {\"title\": \"B.乌鸦\"}, {\"title\": \"C.鹩哥\"}, {\"title\": \"D.鹦鹉\"}]', 'fe8j82xk');
+INSERT INTO `question_info` VALUES (10, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'B', '[单选]澳大利亚的国宝是什么动物? ', '[{\"title\": \"A.袋鼠\"}, {\"title\": \"B.鹰\"}, {\"title\": \"C.熊猫\"}, {\"title\": \"D.树袋熊\"}]', 'wr5qr8b3');
+INSERT INTO `question_info` VALUES (11, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'D', '[单选]2014年中超联赛广州恒大夺冠，请问这是恒大几连冠?', '[{\"title\": \"A.1\"}, {\"title\": \"B.2\"}, {\"title\": \"C.3\"}, {\"title\": \"D.4\"}]', 'j4c2n9aj');
+INSERT INTO `question_info` VALUES (12, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'C', '[单选]中国第一位登陆NBA征战的球员是?', '[{\"title\": \"A. 巴特尔\"}, {\"title\": \"B.姚明\"}, {\"title\": \"C.王治郅\"}, {\"title\": \"D. 流川枫\"}]', 'qukpcr3e');
+INSERT INTO `question_info` VALUES (13, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'B', '[单选] 我国最大的淡水湖是：', '[{\"title\": \"A.洞庭湖\"}, {\"title\": \"B.鄱阳湖\"}, {\"title\": \"C.太湖\"}, {\"title\": \"D. 哈纳斯湖\"}]', '2zm8g5y5');
+INSERT INTO `question_info` VALUES (14, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'B', '[单选] 中国近代第一份商业报纸是:', '[{\"title\": \"A.《民报》\"}, {\"title\": \"B.《申报》\"}, {\"title\": \"C.《文汇报》\"}, {\"title\": \"D.《新民晚报》\"}]', 'pg2esnwd');
+INSERT INTO `question_info` VALUES (15, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'A', '[单选] 新闻界最高奖项是?', '[{\"title\": \"A.普利策奖\"}, {\"title\": \"B.南丁格尔奖\"}, {\"title\": \"C.诺贝尔奖\"}, {\"title\": \"D.韬奋新闻奖\"}]', '8br9muqg');
+INSERT INTO `question_info` VALUES (16, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'B', '[单选]人的心脏共有几个心房和心室?', '[{\"title\": \"A、2个\"}, {\"title\": \"B、3个\"}, {\"title\": \"C、4个\"}]', 'evu6jcpa');
+INSERT INTO `question_info` VALUES (17, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'A', '[单选]校园歌曲《童年》的词曲作者是?', '[{\"title\": \"A、罗大佑\"}, {\"title\": \"B、刘传\"}, {\"title\": \"C、王洛宾\"}]', '9ygt8tef');
+INSERT INTO `question_info` VALUES (18, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'B', '[单选]世界最高的塔是?', '[{\"title\": \"A、艾菲尔铁塔\"}, {\"title\": \"B、多伦多塔\"}, {\"title\": \"C、东柏林塔\"}, {\"title\": \"D、 莫斯科塔\"}]', '6jvgrx6p');
+INSERT INTO `question_info` VALUES (19, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'D', '[单选]隐形飞机是指什么样的飞机?', '[{\"title\": \"A、肉眼看不见\"}, {\"title\": \"B、飞行太高看不见\"}, {\"title\": \"C、体积太小\"}, {\"title\": \"D、 雷达测不到\"}]', 'rpjxnblr');
+INSERT INTO `question_info` VALUES (20, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'A', '[单选]下列哪座山不属于我国四大佛山之一:', '[{\"title\": \"A雁荡山\"}, {\"title\": \"B五台山\"}, {\"title\": \"C九华山\"}, {\"title\": \"D峨眉山\"}]', 'l99kca4h');
+INSERT INTO `question_info` VALUES (21, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'B', '[单选]你知道世界最高的塔是哪一座?', '[{\"title\": \"A埃菲尔铁塔\"}, {\"title\": \"B多伦多塔\"}, {\"title\": \"C东柏林塔\"}, {\"title\": \"D莫斯科塔\"}]', '5lnbg3h7');
+INSERT INTO `question_info` VALUES (22, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'B', '[单选]二战后,被处死的日本甲级战犯中哪位时任内阁首相?', '[{\"title\": \"A广田弘毅\"}, {\"title\": \"B东条英机\"}, {\"title\": \"C土肥原\"}, {\"title\": \"D松井石根\"}]', '4n7ssydb');
+INSERT INTO `question_info` VALUES (23, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'D', '[单选]目前世界纪元(公元前后的划分)的方法是以什么为标准:', '[{\"title\": \"A伊斯兰教\"}, {\"title\": \"B佛教\"}, {\"title\": \"C犹太教\"}, {\"title\": \"D耶稣基督教\"}]', 'ndsamwzm');
+INSERT INTO `question_info` VALUES (24, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'D', '[单选]酒中含有酒精，饮酒过多或经常饮酒，会造成酒精中毒，使身体受损，那么，饮酒对人体1.酒中含有酒精，饮酒过多或经常饮酒，会造成酒精中毒，使身体受损，那么，饮酒对人体的哪些器官最为有害?', '[{\"title\": \"A.眼睛\"}, {\"title\": \"B.皮肤\"}, {\"title\": \"C.心脏\"}, {\"title\": \"D.肺\"}]', 'h7fvjqtq');
+INSERT INTO `question_info` VALUES (25, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'D', '[单选]乘坐两排轮子的大型客车，坐在哪里最颠簸 ? ', '[{\"title\": \"A. 车头处\"}, {\"title\": \"B. 车轮正上方\"}, {\"title\": \"C. 都一样\"}, {\"title\": \"D. 车尾处\"}]', 'ux838px9');
+INSERT INTO `question_info` VALUES (26, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'A', '[单选]发生“财政赤字”时，会计核算会用什么颜色的子来标注处理?', '[{\"title\": \"A红色\"}, {\"title\": \"B.蓝色\"}, {\"title\": \"C.黄色\"}, {\"title\": \"D.绿色\"}]', 'ds5mreb4');
+INSERT INTO `question_info` VALUES (27, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'A', '[单选]《西游记》中猪八戒会的变身法术是多少变?', '[{\"title\": \"A.36变\"}, {\"title\": \"B.48变\"}, {\"title\": \"C.60变\"}, {\"title\": \"D.72变\"}]', 'c3crnrac');
+INSERT INTO `question_info` VALUES (28, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'B', '[单选]电影《人再囧途之泰囧》中徐朗的竞争对手高博由哪位着名男演员饰演? ', '[{\"title\": \"A.王宝强\"}, {\"title\": \"B.黄渤\"}, {\"title\": \"C.徐峥\"}, {\"title\": \"D.宋磊\"}]', 'zfklc53x');
+INSERT INTO `question_info` VALUES (29, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'D', '[单选]清朝的慈禧太后在通知和哪位皇帝在位期间“垂帘听政”，掌握清朝朝政四十多年? ', '[{\"title\": \"A.咸丰\"}, {\"title\": \"B.道光\"}, {\"title\": \"C.嘉庆\"}, {\"title\": \"D.光绪\"}]', '7qm5gnyv');
+INSERT INTO `question_info` VALUES (30, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'C', '[单选] 目前国内正式发行的天文科普刊物是 ', '[{\"title\": \"A. 天空与望远镜\"}, {\"title\": \"B. 星光快讯\"}, {\"title\": \"C. 天文爱好者\"}, {\"title\": \"D.天文馆研究\"}]', 't824suww');
+INSERT INTO `question_info` VALUES (31, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'B', '[单选]以下哪个不是新闻结构组成部分', '[{\"title\": \"A.标题\"}, {\"title\": \"B.经过\"}, {\"title\": \"C.主体\"}, {\"title\": \"D.结语\"}]', 'g6rnmcq8');
+INSERT INTO `question_info` VALUES (32, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'B', '[单选]欧洲的巨石阵是着名的史前__遗址', '[{\"title\": \"A地理\"}, {\"title\": \"B天文\"}, {\"title\": \"C历史\"}, {\"title\": \"D文化\"}]', 'x5uhj7pl');
+INSERT INTO `question_info` VALUES (33, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'C', '[单选]“出师一表真名世，千载谁堪伯仲间”出自于哪个诗人', '[{\"title\": \"A杜牧\"}, {\"title\": \"B李白\"}, {\"title\": \"C陆游\"}, {\"title\": \"D杜甫\"}]', 'khgu8geu');
+INSERT INTO `question_info` VALUES (34, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'D', '[单选]澳大利亚的国花是', '[{\"title\": \"A紫藤萝\"}, {\"title\": \"B百合花\"}, {\"title\": \"C雪绒花\"}, {\"title\": \"D金合欢\"}]', 'bcvdrk6t');
+
+INSERT INTO `question_info` VALUES (36, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'C', '[单选]人的舌头哪个部位对苦味最敏感?', '[{\"title\": \"A舌尖\"}, {\"title\": \"B舌两侧\"}, {\"title\": \"C舌根\"}]', 'ak9zcv4y');
+INSERT INTO `question_info` VALUES (37, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'A', '[单选]人类全身上下最强韧有力的肌肉是', '[{\"title\": \"A.舌头\"}, {\"title\": \"B.腹肌\"}, {\"title\": \"C.胸肌\"}]', 'van7gmh2');
+INSERT INTO `question_info` VALUES (38, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'C', '[单选]生病发烧时最不宜喝', '[{\"title\": \"A.果汁\"}, {\"title\": \"B.白开水\"}, {\"title\": \"C.浓茶\"}]', '3m7fswd6');
+INSERT INTO `question_info` VALUES (39, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'C', '[单选]感恩节在每年的', '[{\"title\": \"A.11月1日\"}, {\"title\": \"B.10月的第四个星期五\"}, {\"title\": \"C.11月的第四个星期四\"}]', 'mwswmqzn');
+INSERT INTO `question_info` VALUES (40, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'A', '[单选]贝多芬的《第六交响曲》也称', '[{\"title\": \"A.田园交响曲\"}, {\"title\": \"B.英雄交响曲\"}, {\"title\": \"C.命运交响曲\"}]', 'y2fjjptz');
+INSERT INTO `question_info` VALUES (41, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'B', '[单选]摄像机与被摄对象处于同一水平线上，拍出的画面，给人的感觉是', '[{\"title\": \"A. 庄严、崇高\"}, {\"title\": \"B自然、亲切\"}, {\"title\": \"C. 稳中、端庄\"}, {\"title\": \"D. 纵深感、透视感\"}]', 'fe8q8exk');
+INSERT INTO `question_info` VALUES (42, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'D', '[单选] 广播电视编辑的工作环节包括新闻节目生产过程中。', '[{\"title\": \"A.获取线索、构思、组织、加工\"}, {\"title\": \"B.栏目定位、组织、加工\"}, {\"title\": \"C构思、组织、加工、制作\"}, {\"title\": \"D. 构思、 组织、 制作、 播出\"}]', 'wr52r6b3');
+INSERT INTO `question_info` VALUES (43, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'D', '[单选] 新闻媒介开展舆论监督， 最常用的形式是  。', '[{\"title\": \"A、 新闻评论\"}, {\"title\": \"B、专题报道\"}, {\"title\": \"C、深度报道\"}, {\"title\": \"D、新闻批评\"}]', 'j4cpnlaj');
+INSERT INTO `question_info` VALUES (44, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'C', '[单选]推镜头 是指 。', '[{\"title\": \"A、摄像机变化焦距使画面框架逐渐远离被摄对象的镜头。\"}, {\"title\": \"B、 摄像机随物体运动而进行拍摄的镜头。\"}, {\"title\": \"C、与拉镜头运动方向相反的一种拍摄方式。\"}, {\"title\": \"D、摄像机固定在一个支点上，沿水平轴或垂直轴运动拍摄的镜头。\"}]', 'quk8c43e');
+INSERT INTO `question_info` VALUES (45, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'A', '[单选]据事说理的 方法有 。', '[{\"title\": \"A、依托式\"}, {\"title\": \"B、对比式\"}, {\"title\": \"C、类比式\"}, {\"title\": \"D、比喻式\"}]', '2zmeghy5');
+INSERT INTO `question_info` VALUES (46, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'A', '[单选] 新闻编排安排结构要遵循的三个重要概念是 ', '[{\"title\": \"A峰谷、 节奏、 分段\"}, {\"title\": \"B标题、片花、结尾\"}, {\"title\": \"C、优化、集纳、配合\"}, {\"title\": \"D策划、组织、编排\"}]', 'pg29sdwd');
+INSERT INTO `question_info` VALUES (47, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'A', '[单选] 在画面编辑中，把几个主体内容类似的画面连接在一起，以渲染气氛，强调情节的组接方式 是', '[{\"title\": \"A、积累\"}, {\"title\": \"B、对比\"}, {\"title\": \"C、比喻\"}, {\"title\": \"D、象征\"}]', '8br6mzqg');
+INSERT INTO `question_info` VALUES (48, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'A', '[单选]太阳大气从里到外分为三层，依次为?', '[{\"title\": \"A.光球,色球,日冕\"}, {\"title\": \"B.色球,光球,日冕\"}, {\"title\": \"C.光球,日冕,色球\"}, {\"title\": \"D.色球,日冕,光球\"}]', 'evurjtpa');
+INSERT INTO `question_info` VALUES (49, 1, 0, 3, '2022-02-15 21:56:27', NULL, '', 1, 'B', '[单选]吃太多手摇爆米花机爆出的米花会导致 ', '[{\"title\": \"A.锡中毒\"}, {\"title\": \"B.铅中毒\"}, {\"title\": \"C.铬中毒\"}, {\"title\": \"D.碘中毒\"}]', '9ygg8kef');
 
 
 -- ----------------------------
@@ -397,12 +445,12 @@ CREATE TABLE `sys_dict_detail`  (
 -- ----------------------------
 -- Records of sys_dict_detail
 -- ----------------------------
-INSERT INTO `sys_dict_detail` VALUES (1, 1, '激活', 'true', 1, NULL, NULL, '2019-10-27 20:31:36', NULL);
-INSERT INTO `sys_dict_detail` VALUES (2, 1, '禁用', 'false', 2, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_dict_detail` VALUES (3, 4, '启用', 'true', 1, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_dict_detail` VALUES (4, 4, '停用', 'false', 2, NULL, NULL, '2019-10-27 20:31:36', NULL);
-INSERT INTO `sys_dict_detail` VALUES (5, 5, '启用', 'true', 1, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_dict_detail` VALUES (6, 5, '停用', 'false', 2, NULL, NULL, '2019-10-27 20:31:36', NULL);
+INSERT INTO `sys_dict_detail` VALUES (1, 1, '激活', '1', 1, NULL, NULL, '2019-10-27 20:31:36', NULL);
+INSERT INTO `sys_dict_detail` VALUES (2, 1, '禁用', '0', 2, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_dict_detail` VALUES (3, 4, '启用', '1', 1, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_dict_detail` VALUES (4, 4, '停用', '0', 2, NULL, NULL, '2019-10-27 20:31:36', NULL);
+INSERT INTO `sys_dict_detail` VALUES (5, 5, '启用', '1', 1, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_dict_detail` VALUES (6, 5, '停用', '0', 2, NULL, NULL, '2019-10-27 20:31:36', NULL);
 INSERT INTO `sys_dict_detail` VALUES (7, 6, '启用', '1', 1, 'admin', 'admin', '2022-01-16 21:32:56', '2022-03-23 17:51:57');
 INSERT INTO `sys_dict_detail` VALUES (8, 6, '禁用', '0', 2, 'admin', 'admin', '2022-01-16 21:33:05', '2022-03-23 17:52:01');
 INSERT INTO `sys_dict_detail` VALUES (9, 7, '选择题', '1', 1, 'admin', 'admin', '2022-02-12 15:55:03', '2022-02-12 15:55:12');
@@ -613,7 +661,7 @@ CREATE TABLE `sys_quartz_job`  (
   `job_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `bean_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'Spring Bean名称',
   `cron_expression` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'cron 表达式',
-  `is_pause` bit(1) NULL DEFAULT NULL COMMENT '状态：1暂停、0启用',
+  `pause` bit(1) NULL DEFAULT NULL COMMENT '状态：1暂停、0启用',
   `job_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '任务名称',
   `method_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '方法名称',
   `params` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '参数',
@@ -627,7 +675,7 @@ CREATE TABLE `sys_quartz_job`  (
   `create_time` datetime NULL DEFAULT NULL COMMENT '创建日期',
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`job_id`) USING BTREE,
-  INDEX `inx_is_pause`(`is_pause`) USING BTREE
+  INDEX `inx_is_pause`(`pause`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '定时任务' ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -651,7 +699,7 @@ CREATE TABLE `sys_quartz_log`  (
   `create_time` datetime NULL DEFAULT NULL,
   `cron_expression` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `exception_detail` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `is_success` bit(1) NULL DEFAULT NULL,
+  `success` bit(1) NULL DEFAULT NULL,
   `job_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `method_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `params` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -868,7 +916,7 @@ CREATE TABLE `sys_user`  (
   `avatar_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '头像地址',
   `avatar_path` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '头像真实路径',
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '密码',
-  `is_admin` bit(1) NULL DEFAULT b'0' COMMENT '是否为admin账号',
+  `admin` bit(1) NULL DEFAULT b'0' COMMENT '是否为admin账号',
   `enabled` bigint NULL DEFAULT NULL COMMENT '状态：1启用、0禁用',
   `create_by` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建者',
   `update_by` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新者',
