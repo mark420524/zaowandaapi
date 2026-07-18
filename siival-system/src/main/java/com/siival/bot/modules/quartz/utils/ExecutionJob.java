@@ -78,7 +78,7 @@ public class ExecutionJob extends QuartzJobBean {
                 redisUtils.set(uuid, true);
             }
             // 任务状态
-            log.setIsSuccess(true);
+            log.setSuccess(1);
             logger.info("任务执行成功，任务名称：" + quartzJob.getJobName() + ", 执行时间：" + times + "毫秒");
             // 判断是否存在子任务
             if(StringUtils.isNotBlank(quartzJob.getSubTask())){
@@ -94,11 +94,11 @@ public class ExecutionJob extends QuartzJobBean {
             long times = System.currentTimeMillis() - startTime;
             log.setTime(times);
             // 任务状态 0：成功 1：失败
-            log.setIsSuccess(false);
+            log.setSuccess(0);
             log.setExceptionDetail(ThrowableUtil.getStackTrace(e));
             // 任务如果失败了则暂停
-            if(quartzJob.getPauseAfterFailure() != null && quartzJob.getPauseAfterFailure()){
-                quartzJob.setIsPause(false);
+            if(quartzJob.getPauseAfterFailure() != null && quartzJob.getPauseAfterFailure().equals(1)){
+                quartzJob.setPause(1);
                 //更新状态
                 quartzJobService.updateIsPause(quartzJob);
             }

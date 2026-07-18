@@ -60,7 +60,7 @@ public class QuartzManage {
             scheduler.scheduleJob(jobDetail,cronTrigger);
 
             // 暂停任务
-            if (quartzJob.getIsPause()) {
+            if (quartzJob.getPause().equals(1)) {
                 pauseJob(quartzJob);
             }
         } catch (Exception e){
@@ -90,7 +90,7 @@ public class QuartzManage {
 
             scheduler.rescheduleJob(triggerKey, trigger);
             // 暂停任务
-            if (quartzJob.getIsPause()) {
+            if (quartzJob.getPause().equals(1)) {
                 pauseJob(quartzJob);
             }
         } catch (Exception e){

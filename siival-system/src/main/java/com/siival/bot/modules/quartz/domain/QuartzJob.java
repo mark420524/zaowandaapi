@@ -66,7 +66,7 @@ public class QuartzJob extends BaseEntity implements Serializable {
     private String cronExpression;
 
     @ApiModelProperty(value = "状态，暂时或启动")
-    private Boolean isPause = false;
+    private Integer pause  ;
 
     @ApiModelProperty(value = "负责人")
     private String personInCharge;
@@ -78,7 +78,7 @@ public class QuartzJob extends BaseEntity implements Serializable {
     private String subTask;
 
     @ApiModelProperty(value = "失败后暂停")
-    private Boolean pauseAfterFailure;
+    private Integer pauseAfterFailure;
 
     @NotBlank
     @ApiModelProperty(value = "备注")

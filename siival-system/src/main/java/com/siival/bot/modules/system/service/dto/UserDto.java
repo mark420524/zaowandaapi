@@ -58,10 +58,10 @@ public class UserDto extends BaseDTO implements Serializable {
     @JSONField(serialize = false)
     private String password;
 
-    private Boolean enabled;
+    private Integer enabled;
 
     @JSONField(serialize = false)
-    private Boolean isAdmin = false;
+    private Integer admin = 0;
 
     private Date pwdResetTime;
 }

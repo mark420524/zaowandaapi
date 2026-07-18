@@ -53,7 +53,7 @@ public class QuartzLog implements Serializable {
     private String cronExpression;
 
     @ApiModelProperty(value = "状态", hidden = true)
-    private Boolean isSuccess;
+    private Integer success;
 
     @ApiModelProperty(value = "异常详情", hidden = true)
     private String exceptionDetail;

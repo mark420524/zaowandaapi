@@ -15,6 +15,7 @@
  */
 package com.siival.bot.modules.system.service.impl;
 
+import com.siival.bot.enums.CommonStatusEnum;
 import com.siival.bot.exception.BadRequestException;
 import com.siival.bot.exception.EntityExistException;
 import com.siival.bot.modules.system.domain.Job;
@@ -110,7 +111,7 @@ public class JobServiceImpl implements JobService {
         for (JobDto jobDTO : jobDtos) {
             Map<String,Object> map = new LinkedHashMap<>();
             map.put("岗位名称", jobDTO.getName());
-            map.put("岗位状态", jobDTO.getEnabled() ? "启用" : "停用");
+            map.put("岗位状态", CommonStatusEnum.ENABLE.getKey().equals(jobDTO.getEnabled()) ? "启用" : "停用");
             map.put("创建日期", jobDTO.getCreateTime());
             list.add(map);
         }

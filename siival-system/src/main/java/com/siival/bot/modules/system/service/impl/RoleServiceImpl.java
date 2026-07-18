@@ -170,7 +170,7 @@ public class RoleServiceImpl implements RoleService {
     public List<GrantedAuthority> mapToGrantedAuthorities(UserDto user) {
         Set<String> permissions = new HashSet<>();
         // 如果是管理员直接返回
-        if (user.getIsAdmin()) {
+        if (user.getAdmin().equals(1)) {
             permissions.add("admin");
             return permissions.stream().map(SimpleGrantedAuthority::new)
                     .collect(Collectors.toList());

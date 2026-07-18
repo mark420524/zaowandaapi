@@ -41,7 +41,7 @@ public class UserQueryCriteria implements Serializable {
     private String blurry;
 
     @Query
-    private Boolean enabled;
+    private Integer enabled;
 
     private Long deptId;
 

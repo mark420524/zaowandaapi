@@ -97,10 +97,10 @@ public class User extends BaseEntity implements Serializable {
 
     @NotNull
     @ApiModelProperty(value = "是否启用")
-    private Boolean enabled;
+    private Integer enabled;
 
     @ApiModelProperty(value = "是否为admin账号", hidden = true)
-    private Boolean isAdmin = false;
+    private Integer admin = 0;
 
     @Column(name = "pwd_reset_time")
     @ApiModelProperty(value = "最后修改密码的时间", hidden = true)

@@ -77,6 +77,6 @@ public class JwtUserDto implements UserDetails {
     @Override
     @JSONField(serialize = false)
     public boolean isEnabled() {
-        return user.getEnabled();
+        return user.getEnabled().equals(1);
     }
 }

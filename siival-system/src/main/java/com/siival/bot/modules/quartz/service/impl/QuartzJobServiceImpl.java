@@ -105,12 +105,12 @@ public class QuartzJobServiceImpl implements QuartzJobService {
 
     @Override
     public void updateIsPause(QuartzJob quartzJob) {
-        if (quartzJob.getIsPause()) {
+        if (quartzJob.getPause().equals(1)) {
             quartzManage.resumeJob(quartzJob);
-            quartzJob.setIsPause(false);
+            quartzJob.setPause(0);
         } else {
             quartzManage.pauseJob(quartzJob);
-            quartzJob.setIsPause(true);
+            quartzJob.setPause(1);
         }
         quartzJobRepository.save(quartzJob);
     }
@@ -169,7 +169,7 @@ public class QuartzJobServiceImpl implements QuartzJobService {
             map.put("执行方法", quartzJob.getMethodName());
             map.put("参数", quartzJob.getParams());
             map.put("表达式", quartzJob.getCronExpression());
-            map.put("状态", quartzJob.getIsPause() ? "暂停中" : "运行中");
+            map.put("状态", quartzJob.getPause().equals(1) ? "暂停中" : "运行中");
             map.put("描述", quartzJob.getDescription());
             map.put("创建日期", quartzJob.getCreateTime());
             list.add(map);
@@ -189,7 +189,7 @@ public class QuartzJobServiceImpl implements QuartzJobService {
             map.put("表达式", quartzLog.getCronExpression());
             map.put("异常详情", quartzLog.getExceptionDetail());
             map.put("耗时/毫秒", quartzLog.getTime());
-            map.put("状态", quartzLog.getIsSuccess() ? "成功" : "失败");
+            map.put("状态", quartzLog.getSuccess().equals(1) ? "成功" : "失败");
             map.put("创建日期", quartzLog.getCreateTime());
             list.add(map);
         }

@@ -155,7 +155,7 @@ public class DeptServiceImpl implements DeptService {
         for (DeptDto deptDTO : deptDtos) {
             Map<String,Object> map = new LinkedHashMap<>();
             map.put("部门名称", deptDTO.getName());
-            map.put("部门状态", deptDTO.getEnabled() ? "启用" : "停用");
+            map.put("部门状态", deptDTO.getEnabled().equals(1) ? "启用" : "停用");
             map.put("创建日期", deptDTO.getCreateTime());
             list.add(map);
         }
@@ -178,7 +178,7 @@ public class DeptServiceImpl implements DeptService {
     public List<Long> getDeptChildren(List<Dept> deptList) {
         List<Long> list = new ArrayList<>();
         deptList.forEach(dept -> {
-                    if (dept!=null && dept.getEnabled()) {
+                    if (dept!=null && dept.getEnabled().equals(1)) {
                         List<Dept> depts = deptRepository.findByPid(dept.getId());
                         if (depts.size() != 0) {
                             list.addAll(getDeptChildren(depts));
